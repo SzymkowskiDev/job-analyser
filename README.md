@@ -16,7 +16,7 @@ User provides skills they have and the program outputs other skills worth learni
 
 ⭐ **What skills do I need to be `<job title>`?**
 
-User enters job title and the program return skill that are needed.
+User enters job title and the program return skills that are needed.
 
 
 ## 🔗 Related Projects
