@@ -13,6 +13,8 @@ logging.basicConfig(level=logging.INFO, format=log_format)
 
 scrape_jobs('https://justjoin.it/')
 generate_report('job_bank.json', 'stats.csv')
+
+################################################################# FUNCTIONS FOR FRONTEND INTEGRATION
 can_apply_for = io_skills_to_titles(["Python", "SQL", "AWS"])
 recommended_skills = io_skills_to_skills(["Python", "SQL", "AWS"])
 needed_skills = io_title_to_skills("Data Engineer")
