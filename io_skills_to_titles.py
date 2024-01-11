@@ -37,4 +37,4 @@ def io_skills_to_titles(input_skills: list, n_titles = 15) -> list:
 
 
 if __name__ == '__main__':
-    io_skills_to_titles(input_skills=['React'])
+    io_skills_to_titles(input_skills=['sql'])
