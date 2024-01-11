@@ -32,7 +32,7 @@ def io_skills_to_titles(input_skills: list, n_titles = 15) -> list:
             n_most_frequent_skills.update({skill: count})
     logging.info(f"{n_most_frequent_skills} {len(n_most_frequent_skills)} most frequent skills for {input_skills} and sample size: {len(sink_filtered)}")
     if len(sink_filtered) < 30:
-        logging.warning(f"Sample size less than 30!")
+        logging.warning(f"Sample size less than 30! ({len(sink_filtered)})")
     return n_most_frequent_skills
 
 

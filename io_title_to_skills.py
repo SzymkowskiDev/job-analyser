@@ -51,7 +51,7 @@ def io_title_to_skills(title='Data Engineer', n_skills=15):
             n_most_frequent_skills.update({skill: count})
     logging.info(f"{n_most_frequent_skills} {len(n_most_frequent_skills)} most frequent skills for {title} and sample size: {len(sink_filtered)}")
     if len(sink_filtered) < 30:
-        logging.warning(f"Sample size less than 30!")
+        logging.warning(f"Sample size less than 30! ({len(sink_filtered)})")
     return n_most_frequent_skills
     
 
