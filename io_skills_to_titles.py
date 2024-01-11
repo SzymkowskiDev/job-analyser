@@ -9,7 +9,9 @@ logging.basicConfig(level=logging.INFO, format=log_format)
 
 
 def io_skills_to_titles(input_skills: list, n_titles = 15) -> list:
+    logging.info(f"{input_skills} input_skills inside io_skills_to_titles")
     sink = load_file(input_filename='data/sink.json', create=True, log_success=True)
+    logging.info(f"{len(sink)} len(sink)")
     sink_filtered = {}
     title_list = []
     for job_url, job_details in sink.items():
@@ -18,7 +20,7 @@ def io_skills_to_titles(input_skills: list, n_titles = 15) -> list:
         if result:
             sink_filtered.update({job_url: job_details})
             title_list.append(job_details.get('job_title'))
-
+    logging.info(f"{len(sink_filtered)} len(sink_filtered) after loop")
     frequency_counts = Counter(title_list)
     sorted_counts = dict(frequency_counts.most_common())
     persist_file(input_data=sorted_counts, output_filename='data/io_skills_to_titles/sink_title_counts.json')
@@ -37,4 +39,4 @@ def io_skills_to_titles(input_skills: list, n_titles = 15) -> list:
 
 
 if __name__ == '__main__':
-    io_skills_to_titles(input_skills=['sql'])
+    io_skills_to_titles(input_skills=['SQL'])

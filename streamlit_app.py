@@ -14,6 +14,7 @@ st.write('Provide skills that you already have and the program will output job t
 input_skills = st.text_input("Your skills", key="input_skills_text_input")
 logging.info(input_skills)
 logging.info(type(input_skills))
+
 st.write(io_skills_to_titles(input_skills))
 
 
