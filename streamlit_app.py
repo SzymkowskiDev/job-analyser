@@ -7,7 +7,8 @@ from util import load_file, persist_file, merge_dicts_without_overwrite
 
 st.write('What positions match my experience?')
 st.write('Provide skills that you already have and the program will output job titles you can hunt for.')
-input_skills = st.text_input("Your skills", key="Python")
+input_skills = st.text_input("Your skills", key="input_skills_text_input")
+print(input_skills)
 st.write(io_skills_to_titles(input_skills))
 
 
