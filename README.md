@@ -1,6 +1,8 @@
 # Job Analyser
 Scans the job market to serve career advice.
 
+![demo_question1](https://github.com/SzymkowskiDev/job-analyser/blob/master/assets/demo_q1.gif?raw=true)
+
 ## 🔗 Links
 * [available here](https://job-analyser-uhsgzgqgyy3eg9sgnc2qhe.streamlit.app/)
 * [www.career-advice.it](https://career-advice.it/)
