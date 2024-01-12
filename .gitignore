@@ -169,7 +169,7 @@ cython_debug/
 env.ini
 myenv
 
-# scrape_infinite_scroll.py
-# scrape_job_details.py
-# main.py
+scrape_infinite_scroll.py
+scrape_job_details.py
+main.py
 
