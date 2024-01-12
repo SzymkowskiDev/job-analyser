@@ -10,7 +10,7 @@ from generate_text_cloud import generate_text_cloud
 log_format = '%(levelname)s: %(message)s'
 logging.basicConfig(level=logging.INFO, format=log_format)
 
-st.image('assets/logo_new.png', caption="https://career-advice.it/market-research/")
+st.image('assets/logo_new.png', caption="https://career-advice.it")
 
 st.header('What skills do I need to be X?')
 st.write('Enter job title you are interested in and the program will output skills that are required for this position.')
