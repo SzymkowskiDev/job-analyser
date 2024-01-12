@@ -35,24 +35,29 @@ def get_skill_frequencies(sink_filtered):
     return sorted_counts
 
 
-def io_title_to_skills(title='Data Engineer', n_skills=15):
-    n_most_frequent_skills = None
-    sink = load_file(input_filename='data/sink.json', create=True, log_success=True)
-    sink_filtered = filter_job_titles(sink, title)
-    persist_file(input_data=sink_filtered, output_filename='data/io_title_to_skills/sink_title.json')
-    sorted_counts = get_skill_frequencies(sink_filtered)
-    n_most_frequent_skills = {}
-    counter = 0
-    for skill, count in sorted_counts.items():
-        counter += 1
-        if counter > n_skills:
-            break
-        else:
-            n_most_frequent_skills.update({skill: count})
-    logging.info(f"{n_most_frequent_skills} {len(n_most_frequent_skills)} most frequent skills for {title} and sample size: {len(sink_filtered)}")
-    if len(sink_filtered) < 30:
-        logging.warning(f"Sample size less than 30! ({len(sink_filtered)})")
-    return n_most_frequent_skills
+def io_title_to_skills(title, n_skills=15):
+    if title:
+        n_most_frequent_skills = None
+        sink = load_file(input_filename='data/sink.json', create=True, log_success=True)
+        sink_filtered = filter_job_titles(sink, title)
+        persist_file(input_data=sink_filtered, output_filename='data/io_title_to_skills/sink_title.json')
+        sorted_counts = get_skill_frequencies(sink_filtered)
+        n_most_frequent_skills = {}
+        counter = 0
+        for skill, count in sorted_counts.items():
+            counter += 1
+            if counter > n_skills:
+                break
+            else:
+                n_most_frequent_skills.update({skill: count})
+        logging.info(f"{n_most_frequent_skills} {len(n_most_frequent_skills)} most frequent skills for {title} and sample size: {len(sink_filtered)}")
+        sample_size = len(sink_filtered)
+        if sample_size < 30:
+            logging.warning(f"Sample size less than 30! ({sample_size})")
+        return n_most_frequent_skills, sample_size
+    else:
+        sample_size = 0
+        return {}, sample_size
     
 
 if __name__ == '__main__':

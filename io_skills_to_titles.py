@@ -9,34 +9,42 @@ logging.basicConfig(level=logging.INFO, format=log_format)
 
 
 def io_skills_to_titles(input_skills: list, n_titles = 15) -> list:
-    logging.info(f"{input_skills} input_skills inside io_skills_to_titles")
-    sink = load_file(input_filename='data/sink.json', create=True, log_success=True)
-    logging.info(f"{len(sink)} len(sink)")
-    sink_filtered = {}
-    title_list = []
-    for job_url, job_details in sink.items():
-        required_skills = job_details.get('required_skills')
-        result = set(input_skills).intersection(set(required_skills)) == set(input_skills)
-        if result:
-            sink_filtered.update({job_url: job_details})
-            title_list.append(job_details.get('job_title'))
-    logging.info(f"{len(sink_filtered)} len(sink_filtered) after loop")
-    frequency_counts = Counter(title_list)
-    sorted_counts = dict(frequency_counts.most_common())
-    persist_file(input_data=sorted_counts, output_filename='data/io_skills_to_titles/sink_title_counts.json')
-    n_most_frequent_skills = {}
-    counter = 0
-    for skill, count in sorted_counts.items():
-        counter += 1
-        if counter > n_titles:
-            break
-        else:
-            n_most_frequent_skills.update({skill: count})
-    logging.info(f"{n_most_frequent_skills} {len(n_most_frequent_skills)} most frequent skills for {input_skills} and sample size: {len(sink_filtered)}")
-    if len(sink_filtered) < 30:
-        logging.warning(f"Sample size less than 30! ({len(sink_filtered)})")
-    return n_most_frequent_skills
+    if input_skills:
+        input_skills = [s.lower() for s in input_skills]
+        sink = load_file(input_filename='data/sink.json', create=True, log_success=True)
+        sink_filtered = {}
+        title_list = []
+        for job_url, job_details in sink.items():
+            required_skills = job_details.get('required_skills')
+            required_skills = [s.lower() for s in required_skills]
+            all_present = True
+            for element in input_skills:
+                if element not in required_skills:
+                    all_present = False
+                    break
+            if all_present:
+                sink_filtered.update({job_url: job_details})
+                title_list.append(job_details.get('job_title'))
+        frequency_counts = Counter(title_list)
+        sorted_counts = dict(frequency_counts.most_common())
+        persist_file(input_data=sorted_counts, output_filename='data/io_skills_to_titles/sink_title_counts.json')
+        n_most_frequent_titles = {}
+        counter = 0
+        for skill, count in sorted_counts.items():
+            counter += 1
+            if counter > n_titles:
+                break
+            else:
+                n_most_frequent_titles.update({skill: count})
+        logging.info(f"{n_most_frequent_titles} {len(n_most_frequent_titles)} most frequent skills for {input_skills} and sample size: {len(sink_filtered)}")
+        sample_size = len(sink_filtered) 
+        if sample_size < 30:
+            logging.warning(f"Sample size less than 30! ({len(sink_filtered)})")
+        return n_most_frequent_titles, sample_size
+    else:
+        sample_size = 0
+        return {}, sample_size
 
 
 if __name__ == '__main__':
-    io_skills_to_titles(input_skills=['SQL'])
+    io_skills_to_titles(input_skills=['SQL','Python'])
