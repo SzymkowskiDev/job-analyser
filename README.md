@@ -1,10 +1,18 @@
 # Job Analyser
 Scans the job market to serve career advice.
 
+## 🔗 Links
+* [available here](https://job-analyser-uhsgzgqgyy3eg9sgnc2qhe.streamlit.app/)
+* [www.career-advice.it](https://career-advice.it/)
+
 
 ## ⭐ Features
 
-Trained on a large and constantly updating dataset of job offers currently posted on the job boards.
+Trained on a large and constantly updated dataset of job offers currently posted on job boards.
+
+⭐ **What skills do I need to be `<job title>`?**
+
+User enters job title and the program return skills that are needed.
 
 ⭐ **What positions match my experience?**
 
@@ -13,14 +21,6 @@ User provides skills they have and the program outputs job titles you can hunt f
 ⭐ **What new skills will allow me to apply for more job offers?**
 
 User provides skills they have and the program outputs other skills worth learnign that would incerase his match to more job offers.
-
-⭐ **What skills do I need to be `<job title>`?**
-
-User enters job title and the program return skills that are needed.
-
-
-## 🔗 Related Projects
-* [www.career-advice.it](https://career-advice.it/)
 
 
 ## 📄 License
