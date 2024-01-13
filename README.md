@@ -22,7 +22,7 @@ User provides skills they have and the program outputs job titles you can hunt f
 
 ⭐ **What new skills will allow me to apply for more job offers?**
 
-User provides skills they have and the program outputs other skills worth learnign that would incerase his match to more job offers.
+User provides skills they have and the program outputs other skills worth learning that would make him/her better match for more job openings.
 
 
 ## 📄 License
